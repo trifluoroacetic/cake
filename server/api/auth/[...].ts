@@ -7,9 +7,9 @@ export default NuxtAuthHandler({
     providers: [
         // @ts-ignore
         KeycloakProvider.default({
-            clientId: "lol",
-            issuer: "http://localhost:8080/realms/master",
-            clientSecret: "Pk51dKzyaa0mj2Vv5x3wIaoGabmIasO4"
+            clientId: "dev",
+            issuer: "http://localhost:8080/realms/dev",
+            clientSecret: "dev"
         })
     ]
 })
