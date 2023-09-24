@@ -1,12 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  auth: {
+    provider: {
+      type: 'authjs'
+    }
+  },
   devtools: {
     enabled: true,
   },
   components: [
   ],
   modules: [
-    '@invictus.codes/nuxt-vuetify'
+    '@invictus.codes/nuxt-vuetify',
+    '@sidebase/nuxt-auth'
   ],
   vuetify: {
     /* vuetify options */
