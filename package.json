@@ -16,7 +16,7 @@
     "nuxt": "^3.7.3"
   },
   "dependencies": {
-    "next-auth": "4.21.1"
+    "next-auth": "4.21.1",
     "@mdi/font": "^7.2.96"
   }
 }
