@@ -1,6 +1,3 @@
-<script setup lang="ts">
-const { status, data, signIn, signOut } = useAuth()
-</script>
 <template>
   <v-theme-provider theme="dark" with-background class="pa-14">
     <v-app>
