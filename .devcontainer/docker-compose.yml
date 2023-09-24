@@ -38,7 +38,12 @@ services:
     environment:
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
+      - PORT=8080
+    ports:
+      - 8080:8080
+    network_mode: service:db
     command: [ "start-dev" ]
+    
 
 volumes:
   mongodb-data:
