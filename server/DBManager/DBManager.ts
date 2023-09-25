@@ -1,66 +1,59 @@
 import { MongoClient, Db } from "mongodb";
 
 class DBManager {
-  ready: boolean = false;
   private readonly client: MongoClient;
   readonly database: Db;
 
   private static _instance?: DBManager;
 
-  static get instance(): DBManager | undefined {
+  static get instance(): DBManager {
+    if (!DBManager._instance) {
+      throw new Error("DBManager not initialized!");
+    }
     return DBManager._instance;
   }
 
   private constructor(
-    db: Db,
-    client: MongoClient,
-    cb: (dbmanager: DBManager) => void
+    database: Db,
+    client: MongoClient
   ) {
-    if (DBManager.instance && DBManager.instance.ready) {
-      console.warn(
-        "DBManager instance already exists! Class DBManager is a singleton!"
-      );
-    }
-
-    this.database = db;
+    this.database = database;
     this.client = client;
-
-    this.ready = true;
-
-    DBManager._instance = this;
-
-    cb(this);
   }
-
-  static init(config: {
+  
+  static async init(config: {
     prod: boolean;
     DB_URL: string;
     DB_NAME: string;
-  }): Promise<DBManager> {
-    return new Promise(async (resolve: (value: DBManager) => void, reject) => {
-      if (DBManager.instance) return resolve(DBManager.instance);
+  }) {
+    if (DBManager._instance) {
+      throw Error("DBManager instance already exists!");
+    }
+  
+    const client = await MongoClient.connect(config.DB_URL);
+    const database = client.db(
+      config.DB_NAME +
+        (config.prod || config.DB_NAME.endsWith("--test") ? "" : "--DEV")
+    );
 
-      try {
-        const client = await MongoClient.connect(config.DB_URL);
-        const db = client.db(
-          config.DB_NAME +
-            (config.prod || config.DB_NAME.endsWith("--test") ? "" : "--DEV")
-        );
+    if (!database) {
+      throw Error("Database not found!");
+    }
 
-        if (!db) return;
-
-        new DBManager(db, client, resolve);
-      } catch (err) {
-        reject(err);
-        return;
-      }
-    });
+    DBManager._instance = new DBManager(database, client);
+    console.log("DBManager: Connected to database " + database.databaseName);
   }
 
   static destroy() {
-    DBManager.instance?.client?.close();
+    DBManager._instance?.client?.close();
     DBManager._instance = undefined;
   }
 }
+
+DBManager.init({
+  prod: false,
+  DB_URL: "mongodb://localhost:27017", // TODO: make configurable
+  DB_NAME: "test", // TODO: make configurable
+});
 
 export default DBManager;
