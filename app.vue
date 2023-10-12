@@ -1,44 +1,47 @@
 <template>
-  <v-theme-provider theme="dark" with-background class="pa-14">
-    <v-app>
-      <v-app-bar>
-        <template v-slot:append>
-          <h3>Cake V0.1</h3>
-          <v-btn icon="mdi-heart"></v-btn>
+    <VThemeProvider theme="dark" with-background class="pa-14">
+      <VApp>
+        <VAppBar>
+          <template v-slot:append>
+            <h3>Cake V0.1</h3>
+            <VBtn icon="mdi-heart"></VBtn>
+  
+            <VBtn icon="mdi-magnify"></VBtn>
+  
+            <VBtn icon="mdi-dots-vertical"></VBtn>
+          </template>
+        </VAppBar>
 
-          <v-btn icon="mdi-magnify"></v-btn>
+        <NuxtLayout>
+          <NuxtPage/>
+        </NuxtLayout>
 
-          <v-btn icon="mdi-dots-vertical"></v-btn>
-        </template>
-      </v-app-bar>
-
-
-      <v-card title="Card title" subtitle="Subtitle" text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!">
-        <v-card-actions>
-          <v-btn>Click me</v-btn>
-        </v-card-actions>
-      </v-card>
-
-      <v-bottom-navigation>
-        <v-btn value="recent">
-          <v-icon>mdi-history</v-icon>
+        <VBottomNavigation>
+          <VBtn value="recent">
+          <VIcon>mdi-history</VIcon>
 
           <span>Recent</span>
-        </v-btn>
+          </VBtn>
 
-        <v-btn value="favorites">
-          <v-icon>mdi-heart</v-icon>
+          <VBtn value="favorites">
+          <VIcon>mdi-heart</VIcon>
 
           <span>Favorites</span>
-        </v-btn>
+          </VBtn>
 
-        <v-btn value="nearby">
-          <v-icon>mdi-map-marker</v-icon>
+          <VBtn value="nearby">
+          <VIcon>mdi-map-marker</VIcon>
 
           <span>Nearby</span>
-        </v-btn>
-      </v-bottom-navigation>
-
-    </v-app>
-  </v-theme-provider>
+          </VBtn>
+      </VBottomNavigation>  
+      
+      </VApp>
+    </VThemeProvider>
 </template>
+
+<style scoped>
+h1 {
+  border: 2px solid red;
+}
+</style>
