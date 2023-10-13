@@ -13,12 +13,14 @@
     "@nuxt/devtools": "latest",
     "@types/mongodb": "^4.0.7",
     "@types/node": "^20.5.4",
+    "@sidebase/nuxt-auth": "^0.6.0-beta.5",
     "nuxt": "^3.7.3",
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "next-auth": "4.21.1",
     "@mdi/font": "^7.2.96",
     "h3": "^1.7.1",
-    "mongodb": "^5.7.0"
+    "mongodb": "^6.1.0"
   }
 }

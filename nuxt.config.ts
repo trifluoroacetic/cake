@@ -23,6 +23,11 @@ export default defineNuxtConfig({
         { rel: "shortcut icon", type: "image/x-icon", href: "/favicon.ico" },
       ],
     },
+  },  
+  auth: {
+    provider: {
+      type: 'authjs'
+    }
   },
   // todo Disable this for production
   devtools: {
@@ -44,6 +49,12 @@ export default defineNuxtConfig({
     // Redirects legacy urls
     // '/old-page': { redirect: '/new-page' }
   },
+  components: [
+  ],
+  modules: [
+    '@invictus.codes/nuxt-vuetify',
+    '@sidebase/nuxt-auth'
+  ],
   vuetify: {
     icons: {
       defaultSet: "mdi",
