@@ -1,44 +1,47 @@
 <template>
-  <v-app dark>
-    <v-app-bar>
-      <template v-slot:append>
-        <h3>Cake V0.1</h3>
-        <v-btn icon="mdi-heart"></v-btn>
+    <VThemeProvider theme="dark" with-background class="pa-14">
+      <VApp>
+        <VAppBar>
+          <template v-slot:append>
+            <h3>Cake V0.1</h3>
+            <VBtn icon="mdi-heart"></VBtn>
+  
+            <VBtn icon="mdi-magnify"></VBtn>
+  
+            <VBtn icon="mdi-dots-vertical"></VBtn>
+          </template>
+        </VAppBar>
 
-        <v-btn icon="mdi-magnify"></v-btn>
+        <NuxtLayout>
+          <NuxtPage/>
+        </NuxtLayout>
 
-        <v-btn icon="mdi-dots-vertical"></v-btn>
-      </template>
-    </v-app-bar>
+        <VBottomNavigation>
+          <VBtn value="recent">
+          <VIcon>mdi-history</VIcon>
 
-    <v-card
-      title="Card title"
-      subtitle="Subtitle"
-      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!"
-    >
-      <v-card-actions>
-        <v-btn>Click me</v-btn>
-      </v-card-actions>
-    </v-card>
+          <span>Recent</span>
+          </VBtn>
 
-    <v-bottom-navigation>
-      <v-btn value="recent">
-        <v-icon>mdi-history</v-icon>
+          <VBtn value="favorites">
+          <VIcon>mdi-heart</VIcon>
 
-        <span>Recent</span>
-      </v-btn>
+          <span>Favorites</span>
+          </VBtn>
 
-      <v-btn value="favorites">
-        <v-icon>mdi-heart</v-icon>
+          <VBtn value="nearby">
+          <VIcon>mdi-map-marker</VIcon>
 
-        <span>Favorites</span>
-      </v-btn>
-
-      <v-btn value="nearby">
-        <v-icon>mdi-map-marker</v-icon>
-
-        <span>Nearby</span>
-      </v-btn>
-    </v-bottom-navigation>
-  </v-app>
+          <span>Nearby</span>
+          </VBtn>
+      </VBottomNavigation>  
+      
+      </VApp>
+    </VThemeProvider>
 </template>
+
+<style scoped>
+h1 {
+  border: 2px solid red;
+}
+</style>
